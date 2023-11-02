@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import WorkoutDetails from "./components/WorkoutDetails";
+import { metadata } from "./data/metadata";
 import "./index.css";
 
 const root = ReactDOM.createRoot(
@@ -9,6 +10,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App />
+    <WorkoutDetails metadata={metadata} />
   </React.StrictMode>
 );
