@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ExerciseMetadata } from "../../types/metadata";
 import { formatTime } from "../../utils/formatTime";
 import MetadataItem from "../InstructionItem";
@@ -10,6 +10,50 @@ import { TipIcon } from "../icons/TipIcon";
 
 export interface WorkoutDetailsProps {
   metadata: ExerciseMetadata[];
+}
+
+const TIMER_START_VALUE_SECONDS = 10;
+
+function WorkoutDetailsTemp(props: WorkoutDetailsProps) {
+  const { metadata } = props;
+
+  /**
+   * The current index of the exercise metadata.
+   */
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  /**
+   * The current value of the timer in seconds.
+   */
+  const [timeRemainingSeconds, setTimeRemainingSeconds] = useState(
+    TIMER_START_VALUE_SECONDS
+  );
+
+  // destructure the metadata whenever the current index changes
+  const { exerciseBlueprint, exerciseDetails, friendlyExerciseName, imageUrl } =
+    useMemo(() => {
+      return metadata[currentIndex];
+    }, [currentIndex, metadata]);
+
+  // on mount, set up the timer
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTimeRemainingSeconds((prevTime) => {
+        // if the timer value is less than or equal to zero, return zero
+        if (prevTime <= 0) {
+          return 0;
+        }
+
+        // otherwise, decrement by one second
+        return prevTime - 1;
+      });
+    }, 1000);
+
+    // when this component dismounts, clear the interval
+    return () => clearInterval(intervalId);
+  }, []);
+
+  // listen to the timer value and navigate to the next exercise when it reaches zero
 }
 
 const WorkoutDetails: React.FC<WorkoutDetailsProps> = ({ metadata }) => {
@@ -31,11 +75,16 @@ const WorkoutDetails: React.FC<WorkoutDetailsProps> = ({ metadata }) => {
     }
   }, [timer, currentIndex, metadata.length]);
 
+  // why not useCallback
   const handleNavigation = (increment: number) => {
     const newIndex = currentIndex + increment;
     if (newIndex >= 0 && newIndex < metadata.length) {
-      setCurrentIndex(newIndex);
-      setTimer(10);
+      // setCurrentIndex(newIndex);
+      // setTimer(10);
+      setTimer(() => {
+        setCurrentIndex(newIndex);
+        return 10;
+      });
     }
   };
 
@@ -93,6 +142,7 @@ const WorkoutDetails: React.FC<WorkoutDetailsProps> = ({ metadata }) => {
             <Timer>{formatTime(timer)}</Timer>
             <div className="flex gap-2.5">
               <NavButton
+                // why not useCallback
                 onClick={() => handleNavigation(-1)}
                 disabled={currentIndex === 0}
                 direction="back"
