@@ -52,7 +52,7 @@ const WorkoutDetails: React.FC<WorkoutDetailsProps> = ({ metadata }) => {
             "linear-gradient(0deg, rgba(7, 103, 135, 0.05) 0%, rgba(7, 103, 135, 0.05) 100%), #FFF",
         }}
       >
-        <div className="py-6 pl-5 w-4/12 flex-shrink-0">
+        <div className="py-6 pl-5 w-[600px] flex-shrink-0">
           <img
             src={imageUrl}
             alt={friendlyExerciseName}

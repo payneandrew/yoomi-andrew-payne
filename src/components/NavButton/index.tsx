@@ -40,9 +40,13 @@ const NavButton: FC<NavButtonProps> = ({ onClick, disabled, direction }) => {
   return (
     <button
       onClick={onClick}
-      className={`w-9 h-9 rounded-full border-2 border-black 
+      className={`w-9 h-9 rounded-full border-2
                  focus:outline-none transition-colors duration-200 flex items-center justify-center group
-                 ${!disabled && "hover:bg-deep-blue hover:border-transparent"}`}
+                 ${
+                   disabled
+                     ? "bg-gray-300 border-gray-300"
+                     : "border-black hover:bg-deep-blue hover:border-transparent"
+                 }`}
       data-testid={`${direction}-button`}
       disabled={disabled}
     >
@@ -56,7 +60,7 @@ const NavButton: FC<NavButtonProps> = ({ onClick, disabled, direction }) => {
       >
         <path
           d={pathD}
-          stroke="black"
+          stroke={`${disabled ? "gray" : "black"}`}
           strokeWidth="1.75416"
           strokeLinecap="round"
           strokeLinejoin="round"
