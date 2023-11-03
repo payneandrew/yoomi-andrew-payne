@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { ExerciseMetadata } from "../../types/metadata";
 import { formatTime } from "../../utils/formatTime";
-import { MovementIcon } from "../icons/MovementIcon";
-import { SetupIcon } from "../icons/SetupIcon";
-import { TipIcon } from "../icons/TipIcon";
 import MetadataItem from "../InstructionItem";
 import NavButton from "../NavButton";
 import Timer from "../Timer";
+import { MovementIcon } from "../icons/MovementIcon";
+import { SetupIcon } from "../icons/SetupIcon";
+import { TipIcon } from "../icons/TipIcon";
 
 export interface WorkoutDetailsProps {
   metadata: ExerciseMetadata[];
@@ -20,6 +20,7 @@ const WorkoutDetails: React.FC<WorkoutDetailsProps> = ({ metadata }) => {
 
   useEffect(() => {
     if (timer > 0 && currentIndex < metadata.length) {
+      // why setTimeout instead of setInterval?
       const timerId = setTimeout(() => {
         setTimer(timer - 1);
       }, 1000);
@@ -28,7 +29,6 @@ const WorkoutDetails: React.FC<WorkoutDetailsProps> = ({ metadata }) => {
     } else if (timer <= 0 && currentIndex < metadata.length - 1) {
       handleNavigation(1);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timer, currentIndex, metadata.length]);
 
   const handleNavigation = (increment: number) => {
