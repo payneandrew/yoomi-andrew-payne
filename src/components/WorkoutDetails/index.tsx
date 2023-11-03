@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { ExerciseMetadata } from "../../types/metadata";
 import { formatTime } from "../../utils/formatTime";
-import { MovementIcon } from "../Icons/MovementIcon";
-import { SetupIcon } from "../Icons/SetupIcon";
-import { TipIcon } from "../Icons/TipIcon";
+import { MovementIcon } from "../icons/MovementIcon";
+import { SetupIcon } from "../icons/SetupIcon";
+import { TipIcon } from "../icons/TipIcon";
 import MetadataItem from "../InstructionItem";
 import NavButton from "../NavButton";
 import Timer from "../Timer";
