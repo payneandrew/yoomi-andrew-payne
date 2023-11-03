@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "#FFFFFF",
+        "deep-blue": "#076787",
       },
       fontFamily: {
         "plus-jakarta-sans-font": ["Plus Jakarta Sans", "sans-serif"],

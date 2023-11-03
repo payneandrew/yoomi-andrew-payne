@@ -30,4 +30,5 @@ export interface ExerciseMetadata {
   exerciseBlueprint: ExerciseBlueprint;
   exerciseDetails: ExerciseDetails;
   friendlyExerciseName: string;
+  imageUrl: string; // I added the image url to the data structure to be able to reference the image that corresponds with the exercise
 }

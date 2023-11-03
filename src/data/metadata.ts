@@ -27,6 +27,7 @@ export const metadata: ExerciseMetadata[] = [
       exerciseEquipment: [],
     },
     friendlyExerciseName: "Sidelying Hip Abduction",
+    imageUrl: "images/sidelying-hip-abduction.png",
   },
   {
     exerciseBlueprint: {
@@ -60,6 +61,7 @@ export const metadata: ExerciseMetadata[] = [
     },
     friendlyExerciseName:
       "Shoulder Horizontal Abduction with Resistance on Swiss Ball",
+    imageUrl: "images/swiss-ball.png",
   },
   {
     exerciseBlueprint: {
@@ -91,5 +93,6 @@ export const metadata: ExerciseMetadata[] = [
       exerciseEquipment: [],
     },
     friendlyExerciseName: "Standing ITB Stretch",
+    imageUrl: "images/itb-stretch.png",
   },
 ];
