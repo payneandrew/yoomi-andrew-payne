@@ -8,16 +8,18 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div
-      className="flex h-full overflow-y-scroll"
+      className="flex h-full"
       style={{
         background:
           "linear-gradient(0deg, rgba(7, 103, 135, 0.05) 0%, rgba(7, 103, 135, 0.05) 100%), #FFF",
       }}
     >
       <Sidebar />
-      <div className="w-full">
-        <Topbar />
-        <div>{children}</div>
+      <div className="flex flex-col w-full">
+        <div className="px-6 pt-3">
+          <Topbar />
+        </div>
+        <div className="overflow-y-scroll">{children}</div>
       </div>
     </div>
   );

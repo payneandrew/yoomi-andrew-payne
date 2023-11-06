@@ -38,7 +38,7 @@ const MetadataItem: React.FC<MetadataItemProps> = ({
   title,
   description,
 }) => (
-  <div className="flex gap-5 items-center h-16">
+  <div className="flex gap-5 items-center">
     <IconComponent />
     <div>
       <h2 className="font-semibold text-base">{title}</h2>

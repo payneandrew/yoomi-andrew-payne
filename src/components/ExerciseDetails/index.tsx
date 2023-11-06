@@ -44,7 +44,7 @@ const ExerciseDetails: React.FC<ExerciseDetailsProps> = ({ metadata }) => {
     : "";
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex items-center">
       <div className="flex items-center rounded-lg">
         <div className="py-6 pl-5 w-[600px] flex-shrink-0">
           <img

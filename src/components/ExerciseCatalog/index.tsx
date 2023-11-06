@@ -9,9 +9,9 @@ const ExerciseCatalog: React.FC = () => {
         <p className="opacity-60">{format(new Date(), "dd MMM yyyy, eeee")}</p>
       </div>
       <div className="grid grid-cols-3 gap-4 p-6">
-        <ExerciseTile header="2 selected" />
-        <ExerciseTile header="Select to add" />
-        <ExerciseTile header="Done" />
+        <ExerciseTile header="2 selected" theme="blue" />
+        <ExerciseTile header="Select to add" theme="grey" />
+        <ExerciseTile header="Done" theme="grey" />
       </div>
     </div>
   );
