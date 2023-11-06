@@ -1,4 +1,4 @@
-import { ChevronIcon } from "../ChevronIcon";
+import { ChevronIcon } from "../icons/ChevronIcon";
 import { NotificationIcon } from "../icons/NotificationIcon";
 
 const Topbar: React.FC = () => {

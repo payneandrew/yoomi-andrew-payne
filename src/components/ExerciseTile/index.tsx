@@ -1,7 +1,8 @@
-import { metadata } from "../../data/metadata";
+import { ExerciseMetadata } from "../../types/metadata";
 import ExerciseButton from "../ExerciseButton";
 
 interface ExerciseTileProps {
+  metadata: ExerciseMetadata[];
   header: string;
   theme: "blue" | "grey";
 }
@@ -32,7 +33,11 @@ const colorThemes: Themes = {
   },
 };
 
-const ExerciseTile: React.FC<ExerciseTileProps> = ({ header, theme }) => {
+const ExerciseTile: React.FC<ExerciseTileProps> = ({
+  metadata,
+  header,
+  theme,
+}) => {
   const { bgColor, textColor } = colorThemes[theme];
   return (
     <div
@@ -40,7 +45,10 @@ const ExerciseTile: React.FC<ExerciseTileProps> = ({ header, theme }) => {
     >
       <h2 className="font-semibold text-base">{header}</h2>
       {metadata.map((exercise) => (
-        <div className="flex flex-col gap-2">
+        <div
+          key={exercise.exerciseBlueprint.exerciseId}
+          className="flex flex-col gap-2"
+        >
           <ExerciseButton exercise={exercise} theme={colorThemes[theme]} />
         </div>
       ))}

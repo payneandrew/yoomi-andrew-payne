@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { ExerciseMetadata } from "../../types/metadata";
 import { formatTime } from "../../utils/formatTime";
 import MetadataItem from "../InstructionItem";
@@ -15,7 +15,9 @@ interface ExerciseDetailsProps {
 const ExerciseDetails: React.FC<ExerciseDetailsProps> = ({ metadata }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { exerciseBlueprint, exerciseDetails, friendlyExerciseName, imageUrl } =
-    metadata[currentIndex];
+    useMemo(() => {
+      return metadata[currentIndex];
+    }, [currentIndex, metadata]);
   const [timer, setTimer] = useState<number>(10);
 
   useEffect(() => {
@@ -31,13 +33,18 @@ const ExerciseDetails: React.FC<ExerciseDetailsProps> = ({ metadata }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timer, currentIndex, metadata.length]);
 
-  const handleNavigation = (increment: number) => {
-    const newIndex = currentIndex + increment;
-    if (newIndex >= 0 && newIndex < metadata.length) {
-      setCurrentIndex(newIndex);
-      setTimer(10);
-    }
-  };
+  const handleNavigation = useCallback(
+    (increment: number) => {
+      const newIndex = currentIndex + increment;
+      if (newIndex >= 0 && newIndex < metadata.length) {
+        setTimer(() => {
+          setCurrentIndex(newIndex);
+          return 10;
+        });
+      }
+    },
+    [currentIndex, metadata.length]
+  );
 
   const holdDurationText = exerciseBlueprint.baseConfig.holdDurationMs
     ? " x " + exerciseBlueprint.baseConfig.holdDurationMs / 1000 + "s Hold"

@@ -9,7 +9,7 @@ import { YoomiLogo } from "../icons/YoomiLogo";
 const Sidebar: React.FC = () => {
   return (
     <div className=" bg-deep-blue w-64 absolute sm:relative font-inter-font rounded-r-2xl flex flex-col justify-between">
-      <div>
+      <div className="sticky top-0">
         <div className="flex justify-center mt-10">
           <YoomiLogo />
         </div>
@@ -46,7 +46,7 @@ const Sidebar: React.FC = () => {
           </div>
         </nav>
       </div>
-      <div>
+      <div className="sticky bottom-0 pb-4">
         <div>
           <a
             href="/"

@@ -30,8 +30,8 @@ export const YoomiLogo = () => {
         fill="white"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M21.4402 0.671265H42.7633V12.0473H21.4402V0.671265ZM53.3073 23.1764H53.308V34.5524H42.7636V23.4241H31.9842V12.048H53.3073V23.1764Z"
         fill="white"
       />
