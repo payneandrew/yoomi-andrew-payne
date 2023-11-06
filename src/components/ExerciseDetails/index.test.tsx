@@ -1,13 +1,13 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
-import WorkoutDetails from ".";
+import ExerciseDetails from ".";
 import { metadata } from "../../data/metadata";
 
 describe("WorkoutDetails", () => {
   jest.useFakeTimers();
 
   it("Renders correctly with initial data", () => {
-    render(<WorkoutDetails metadata={metadata} />);
+    render(<ExerciseDetails metadata={metadata} />);
 
     expect(
       screen.getByText(metadata[0].friendlyExerciseName)
@@ -27,7 +27,7 @@ describe("WorkoutDetails", () => {
   });
 
   it('Navigates to next exercise on "Next" button click', () => {
-    render(<WorkoutDetails metadata={metadata} />);
+    render(<ExerciseDetails metadata={metadata} />);
     fireEvent.click(screen.getByTestId("next-button"));
 
     expect(
@@ -48,7 +48,7 @@ describe("WorkoutDetails", () => {
   });
 
   it('Navigates to previous exercise on "Back" button click', () => {
-    render(<WorkoutDetails metadata={metadata} />);
+    render(<ExerciseDetails metadata={metadata} />);
     fireEvent.click(screen.getByTestId("next-button"));
     fireEvent.click(screen.getByTestId("back-button"));
 
@@ -70,7 +70,7 @@ describe("WorkoutDetails", () => {
   });
 
   it("Initial timer value is set correctly and decrements every second", () => {
-    render(<WorkoutDetails metadata={metadata} />);
+    render(<ExerciseDetails metadata={metadata} />);
 
     expect(screen.getByText(/00:10/)).toBeInTheDocument();
 
@@ -82,7 +82,7 @@ describe("WorkoutDetails", () => {
   });
 
   it("Increments the current index when the timer runs out", () => {
-    render(<WorkoutDetails metadata={metadata} />);
+    render(<ExerciseDetails metadata={metadata} />);
     const backButton = screen.getByTestId("back-button");
     expect(backButton).toBeDisabled();
 
@@ -111,7 +111,7 @@ describe("WorkoutDetails", () => {
   });
 
   it("Correctly displays hold duration text", () => {
-    render(<WorkoutDetails metadata={[metadata[2]]} />);
+    render(<ExerciseDetails metadata={[metadata[2]]} />);
     expect(screen.getByText(/x 10s/i)).toBeInTheDocument();
   });
 });

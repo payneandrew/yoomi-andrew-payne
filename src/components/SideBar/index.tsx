@@ -8,7 +8,7 @@ import { YoomiLogo } from "../icons/YoomiLogo";
 
 const Sidebar: React.FC = () => {
   return (
-    <div className="h-screen bg-deep-blue w-64 absolute sm:relative font-inter-font rounded-r-2xl flex flex-col justify-between">
+    <div className=" bg-deep-blue w-64 absolute sm:relative font-inter-font rounded-r-2xl flex flex-col justify-between">
       <div>
         <div className="flex justify-center mt-10">
           <YoomiLogo />

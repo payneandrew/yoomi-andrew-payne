@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { ExerciseMetadata } from "../../types/metadata";
 import { formatTime } from "../../utils/formatTime";
-import { MovementIcon } from "../icons/MovementIcon";
-import { SetupIcon } from "../icons/SetupIcon";
-import { TipIcon } from "../icons/TipIcon";
 import MetadataItem from "../InstructionItem";
 import NavButton from "../NavButton";
 import Timer from "../Timer";
+import { MovementIcon } from "../icons/MovementIcon";
+import { SetupIcon } from "../icons/SetupIcon";
+import { TipIcon } from "../icons/TipIcon";
 
-export interface WorkoutDetailsProps {
+interface ExerciseDetailsProps {
   metadata: ExerciseMetadata[];
 }
 
-const WorkoutDetails: React.FC<WorkoutDetailsProps> = ({ metadata }) => {
+const ExerciseDetails: React.FC<ExerciseDetailsProps> = ({ metadata }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { exerciseBlueprint, exerciseDetails, friendlyExerciseName, imageUrl } =
     metadata[currentIndex];
@@ -45,13 +45,7 @@ const WorkoutDetails: React.FC<WorkoutDetailsProps> = ({ metadata }) => {
 
   return (
     <div className="flex justify-center items-center">
-      <div
-        className="flex items-center rounded-lg"
-        style={{
-          background:
-            "linear-gradient(0deg, rgba(7, 103, 135, 0.05) 0%, rgba(7, 103, 135, 0.05) 100%), #FFF",
-        }}
-      >
+      <div className="flex items-center rounded-lg">
         <div className="py-6 pl-5 w-[600px] flex-shrink-0">
           <img
             src={imageUrl}
@@ -110,4 +104,4 @@ const WorkoutDetails: React.FC<WorkoutDetailsProps> = ({ metadata }) => {
   );
 };
 
-export default WorkoutDetails;
+export default ExerciseDetails;

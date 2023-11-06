@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import ExerciseCatalog from "./components/ExerciseCatalog";
+import ExerciseDetails from "./components/ExerciseDetails";
 import Layout from "./components/Layout";
-import WorkoutDetails from "./components/WorkoutDetails";
 import { metadata } from "./data/metadata";
 import "./index.css";
 
@@ -12,7 +13,8 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Layout>
-      <WorkoutDetails metadata={metadata} />
+      <ExerciseCatalog />
+      <ExerciseDetails metadata={metadata} />
     </Layout>
   </React.StrictMode>
 );
