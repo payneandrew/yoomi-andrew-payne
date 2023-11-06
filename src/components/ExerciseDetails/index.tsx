@@ -76,17 +76,17 @@ const ExerciseDetails: React.FC<ExerciseDetailsProps> = ({ metadata }) => {
               <MetadataItem
                 IconComponent={SetupIcon}
                 title="Setup"
-                description={exerciseDetails.instructions.setup[0]}
+                descriptions={exerciseDetails.instructions.setup}
               />
               <MetadataItem
                 IconComponent={MovementIcon}
                 title="Movement"
-                description={exerciseDetails.instructions.movement[0]}
+                descriptions={exerciseDetails.instructions.movement}
               />
               <MetadataItem
                 IconComponent={TipIcon}
                 title="Tip"
-                description={exerciseDetails.instructions.tips[0]}
+                descriptions={exerciseDetails.instructions.tips}
               />
             </div>
           </div>

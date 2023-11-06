@@ -30,19 +30,25 @@ import React from "react";
 interface MetadataItemProps {
   IconComponent: React.ComponentType;
   title: string;
-  description: string;
+  descriptions: string[];
 }
 
 const MetadataItem: React.FC<MetadataItemProps> = ({
   IconComponent,
   title,
-  description,
+  descriptions,
 }) => (
   <div className="flex gap-5 items-center">
     <IconComponent />
     <div>
       <h2 className="font-semibold text-base">{title}</h2>
-      <p className="opacity-60">{description}</p>
+      <ul className="list-disc pl-4">
+        {descriptions.map((description, index) => (
+          <li key={index} className="opacity-60">
+            {description}
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
 );
